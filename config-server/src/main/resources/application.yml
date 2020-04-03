@@ -1,0 +1,25 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: vault, git
+  cloud:
+    config:
+      server:
+        vault:
+          scheme: http
+          #defaultKey: application
+          order: 1
+          port: 8200
+          host: 127.0.0.1
+          #backend: secret
+          profileSeparator: /
+          kvVersion: 2
+        git:
+          uri: https://github.com/tourem/config-management.git
+          search-paths: config-team-larbotech
+          order: 2
+
+
